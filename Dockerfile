@@ -34,6 +34,7 @@ RUN npm install -g serve
 RUN mkdir -p /opt/app
 COPY --from=BUILD_STAGE /opt/app/build /opt/app/build
 COPY ./public /opt/app/public
+COPY ./package.json /opt/app/
 WORKDIR /opt/app
 
 # Set default command
