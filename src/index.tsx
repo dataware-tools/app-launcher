@@ -2,13 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { Auth0Provider } from "@auth0/auth0-react";
 import * as serviceWorker from "./serviceWorker";
+import { AUTH_CONFIG } from "@dataware-tools/app-common";
 
 import "semantic-ui-less/semantic.less";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Auth0Provider
+      domain={AUTH_CONFIG.domain}
+      clientId={AUTH_CONFIG.clientId}
+      audience={AUTH_CONFIG.apiUrl}
+      redirectUri={window.location.origin}
+    >
+      <App />
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
