@@ -10,7 +10,8 @@ WORKDIR /opt/app
 
 # Install dependency
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
-RUN --mount=type=ssh yarn install --network-concurrency 1
+RUN npm -g config set user root && npm config set unsafe-perm true
+RUN --mount=type=ssh npm install
 
 # Copy other files
 COPY ./src /opt/app/src
