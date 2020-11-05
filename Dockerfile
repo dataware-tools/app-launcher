@@ -3,6 +3,9 @@ FROM node:14.11.0-stretch as BUILD_STAGE
 SHELL ["/bin/bash", "-c"]
 ENV LANG="en_US.UTF-8"
 
+# Install jq
+RUN wget -O /bin/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 && chmod +x /bin/jq
+
 # Copy files
 RUN mkdir -p /opt/app
 COPY ./packag*.json /opt/app/
