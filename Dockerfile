@@ -8,7 +8,7 @@ RUN wget -O /bin/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-l
 
 # Copy files
 RUN mkdir -p /opt/app
-COPY ./packag*.json ./npm* /opt/app/
+COPY ./packag*.json ./.npm* /opt/app/
 WORKDIR /opt/app
 
 # Install dependency
