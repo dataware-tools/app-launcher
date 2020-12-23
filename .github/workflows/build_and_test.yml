@@ -29,9 +29,14 @@ jobs:
           sudo mv trivy /usr/local/bin/
 
       - name: Build image
+        env:
+          NPM_REGISTRY: https://npm.pkg.github.com
+          NPM_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         run: |
           export DOCKER_BUILDKIT=1
-          docker build -t app:latest --ssh default .
+          [[ -n "${NPM_TOKEN}" ]] && echo "//${NPM_REGISTRY##*://}/:_authToken=${NPM_TOKEN}" > /tmp/.npmrc
+          cat /tmp/.npmrc
+          docker build -t app:latest --ssh default --secret id=npmrc,src=/tmp/.npmrc .
 
       - name: Scan image
         run: trivy --exit-code 0 --no-progress app:latest
