@@ -2,19 +2,33 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { Auth0Provider } from "@auth0/auth0-react";
+import { Auth0Provider, AppState } from "@auth0/auth0-react";
 import * as serviceWorker from "./serviceWorker";
-import { AUTH_CONFIG } from "@dataware-tools/app-common";
+import { AUTH_CONFIG, APP_CATALOG } from "@dataware-tools/app-common";
 
 import "semantic-ui-less/semantic.less";
+
+export const authConfig = {
+  domain: process.env.REACT_APP_AUTH0_DOMAIN || AUTH_CONFIG.domain,
+  clientId: process.env.REACT_APP_AUTH0_CLIENT_ID || AUTH_CONFIG.clientId,
+  apiUrl: process.env.REACT_APP_AUTH0_API_URL || AUTH_CONFIG.apiUrl,
+};
+export const redirectUri =
+  window.location.origin + APP_CATALOG.dataBrowser.urlPrefix + "/callback";
+
+export const onRedirectCallback = (appState: AppState) => {
+  window.location.href =
+    appState && appState.returnTo ? appState.returnTo : window.location.origin;
+};
 
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
-      domain={AUTH_CONFIG.domain}
-      clientId={AUTH_CONFIG.clientId}
-      audience={AUTH_CONFIG.apiUrl}
-      redirectUri={window.location.origin}
+      domain={authConfig.domain}
+      clientId={authConfig.clientId}
+      audience={authConfig.apiUrl}
+      redirectUri={redirectUri}
+      onRedirectCallback={onRedirectCallback}
     >
       <App />
     </Auth0Provider>
