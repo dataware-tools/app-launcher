@@ -8,13 +8,13 @@ RUN wget -O /bin/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-l
 
 # Copy files
 RUN mkdir -p /opt/app
-COPY ./packag*.json /opt/app/
+COPY ./packag*.json ./.npm* /opt/app/
 WORKDIR /opt/app
 
 # Install dependency
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
-RUN npm -g config set user root && npm config set unsafe-perm true
-RUN --mount=type=ssh npm install
+RUN npm -g config set user root && npm -g config set unsafe-perm true
+RUN --mount=type=ssh --mount=type=secret,id=npmrc,target=/root/.npmrc npm install
 
 # Copy other files
 COPY ./src /opt/app/src
