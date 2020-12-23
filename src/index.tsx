@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { Auth0Provider, AppState } from "@auth0/auth0-react";
 import * as serviceWorker from "./serviceWorker";
-import { AUTH_CONFIG, APP_CATALOG } from "@dataware-tools/app-common";
+import { AUTH_CONFIG } from "@dataware-tools/app-common";
 
 import "semantic-ui-less/semantic.less";
 
@@ -13,8 +13,7 @@ export const authConfig = {
   clientId: process.env.REACT_APP_AUTH0_CLIENT_ID || AUTH_CONFIG.clientId,
   apiUrl: process.env.REACT_APP_AUTH0_API_URL || AUTH_CONFIG.apiUrl,
 };
-export const redirectUri =
-  window.location.origin + APP_CATALOG.dataBrowser.urlPrefix + "/callback";
+export const redirectUri = window.location.origin + "/callback";
 
 export const onRedirectCallback = (appState: AppState) => {
   window.location.href =
