@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.0.0-experimental
-FROM node:14.11.0-stretch as BUILD_STAGE
+FROM node:15.9.0-stretch as BUILD_STAGE
 SHELL ["/bin/bash", "-c"]
 ENV LANG="en_US.UTF-8"
 
@@ -29,7 +29,7 @@ RUN npm run build
 #
 # Second stage
 #
-FROM node:14.11.0-stretch-slim
+FROM node:15.9.0-stretch
 
 # Install server
 RUN npm install -g serve
