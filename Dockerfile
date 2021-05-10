@@ -29,7 +29,7 @@ RUN npm run build
 #
 # Second stage
 #
-FROM node:14.11.0-stretch-slim
+FROM node:16.1.0-stretch-slim
 
 # Install server
 RUN npm install -g serve
