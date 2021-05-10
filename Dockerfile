@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.0.0-experimental
-FROM node:14.11.0-stretch as BUILD_STAGE
+FROM node:16.1.0-stretch as BUILD_STAGE
 SHELL ["/bin/bash", "-c"]
 ENV LANG="en_US.UTF-8"
 
