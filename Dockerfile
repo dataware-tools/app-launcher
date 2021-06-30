@@ -40,5 +40,9 @@ COPY --from=BUILD_STAGE /opt/app/build /opt/app/build
 COPY ./public /opt/app/public
 WORKDIR /opt/app
 
+# Entrypoint
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 # Set default command
 CMD ["serve", "build", "-s", "-l", "3000"]
