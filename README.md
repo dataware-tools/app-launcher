@@ -1,5 +1,21 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## How to run docker-container
+
+After success of building image
+
+```bash
+$ dc up
+```
+
+If you want to change Auth0's configurations (i.e., client-id, domain, etc.),
+you need to set the following environment variables:
+
+- `REACT_APP_DATAWARE_TOOLS_AUTH_CONFIG_DOMAIN`: Domain (default: `dataware-tools.us.auth0.com`)
+- `REACT_APP_DATAWARE_TOOLS_AUTH_CONFIG_CLIENT_ID`: Client ID (default: the one for the demo page)
+- `REACT_APP_DATAWARE_TOOLS_AUTH_CONFIG_API_URL`: API URL (default: `https://demo.dataware-tools.com/`)
+
+
 ## Available Scripts
 
 In the project directory, you can run:
