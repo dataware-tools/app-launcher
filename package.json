@@ -17,7 +17,7 @@
     "typescript": "^4.2.4",
     "@material-ui/core": "5.0.0-alpha.31",
     "@material-ui/icons": "5.0.0-alpha.28",
-    "@material-ui/lab": "5.0.0-alpha.30",
+    "@material-ui/lab": "5.0.0-alpha.39",
     "@emotion/react": ">= 11.1.5 < 12",
     "@emotion/styled": ">= 11.3.0 < 12"
   },
