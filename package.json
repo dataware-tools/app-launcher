@@ -6,7 +6,7 @@
   "homepage": "/launcher",
   "dependencies": {
     "@auth0/auth0-react": ">=1.4.0 < 2",
-    "@craco/craco": "^5.7.0",
+    "@craco/craco": "^6.2.0",
     "@dataware-tools/app-common": ">=21.6.0",
     "@semantic-ui-react/craco-less": "^1.2.1",
     "react": "^17.0.1",
